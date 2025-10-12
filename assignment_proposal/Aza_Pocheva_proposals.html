@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- This tells browsers and screen readers that our page is in english -->
+
+    <head>
+        <!-- Character encoding and mobile scaling -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <title>Project Proposals</title>
+
+
+        <!-- CSS SECTION - This is where we control how the page looks -->
+
+        <style>
+
+            /* Declare a CSS variable for dark pink color 
+             This pink color can be used anywhere by referring to --pink */
+
+            :root {
+                --pink: #bb0067;
+            }
+
+            /* This makes sure padding doesn't make elements bigger than we want */
+            * {
+                box-sizing: border-box;
+            }
+
+            /* Page background, font and text color > so what you actually ssee
+            
+            These are the basic settings for how the whole page looks */
+
+            body {
+                margin: 0;
+                font-family: Arial, Helvetica, sans-serif;
+                background: #fff;
+                color: #000;
+            }
+
+            /* Main page title styling 
+            This makes the main title big and pink */
+
+            h1 {
+                margin: 28px 16px;
+                text-align: center;
+                font-size: 40px;
+                color: var(--pink);
+            }
+
+
+            /* This keeps our content in the middle of the page and not too wide */
+
+            .container {
+                max-width: 820px;
+                margin: 0 auto;
+                padding: 10px 16px 40px;
+            }
+
+
+            /* This arranges our buttons in a vertical stack, centered on the page */
+
+            .buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                align-items: center;
+                margin-top: 10px;
+            }
+
+
+            /* This styles our pink buttons and makes them clickable */
+
+            .tab-btn {
+                width: 100%;
+                max-width: 720px;
+                padding: 20px 28px;
+                background: var(--pink);
+                color: #fff;
+                border: none;
+                border-radius: 10px;
+                font-size: 22px;
+                font-weight: 700;
+                cursor: pointer;
+
+            }
+
+
+            /* This adds a visible outline when using keyboard navigation */
+
+            .tab-btn:focus {
+                outline: 2px solid var(--pink);
+            }
+
+
+
+            /* These are the boxes that hold each proposal - they start hidden */
+
+
+            .section {
+                display: none; /* Hidden by default */
+                margin-top: 22px;
+                padding: 18px 16px;
+                border: 1px solid #e6e6e6;
+                border-radius: 10px;
+            }
+
+
+            /* This makes all headings inside proposals pink */
+
+            .section h2 {
+                margin-top: 0;
+                color: var(--pink);
+            }
+
+
+            /* This adds space between list items for better readability */
+
+            .section ul {
+                margin: 10px 0 0 18px;
+                line-height: 1.7;
+            }
+
+
+            /* This makes paragraphs easier to read with proper spacing */
+
+            .section p {
+                margin: 0 0 22px;
+                line-height: 1.75;
+            }
+        </style>
+    </head>
+
+
+
+    <body>
+
+        <!-- MAIN CONTENT
+        This is where all the visible content goes -->
+
+        <div class="container">
+
+
+            <!-- Page header -->
+            <h1>My Project Proposals</h1>
+
+
+            <!-- These buttons let users switch between different proposals
+
+            so the onclick attribute calls the toggle function with the corresponding section ID  (js) -->
+
+
+            <div class="buttons">
+                <button class="tab-btn" onclick="toggle('rug')">Rug Cleaning</button>
+                <button class="tab-btn" onclick="toggle('interior')">Dog Walking</button>
+            </div>
+
+
+
+            <!-- First proposal section about rug cleaning -->
+
+            <section id="rug" class="section">
+                <h2>Rug Cleaning Service</h2>
+                <p>A fast, eco-friendly cleaning service for carpets and rugs with pickup and delivery.</p>
+                <p><strong>Problem & Target Audience:</strong> Rugs can be hard to clean at home. Families, pet owners and offices need reliable cleaning without hassle. This is where we intervene with our specialized service!</p>
+                <p><strong>Core Features:</strong></p>
+                <ul>
+                    <li>Online booking system</li>
+                    <li>Pickup and delivery scheduling</li>
+                    <li>Eco-friendly cleaning methods</li>
+                    <li>Price calculator by size</li>
+                    <li>Subscription for regular cleaning</li>
+                    <li>Ratings and feedback</li>
+                </ul>
+            </section>
+
+
+
+            <!-- Second proposal section about dog walking -->
+
+
+            <section id="interior" class="section">
+                <h2>Dog Walking Service</h2>
+                <p>A friendly and reliable service that helps elderly and disabled people take care of their pets by providing safe and caring dog walking assistance.</p>
+                <p><strong>Problem & Target Audience:</strong> Many elderly and disabled people own dogs but struggle to give them regular walks due to mobility issues or other reasons. This service supports them by ensuring their pets stay active, happy and healthy while giving the owners peace of mind.</p>
+                <p><strong>Core Features:</strong></p>
+                <ul>
+                    <li>Caring dog walkers</li>
+                    <li>Easy online booking system</li>
+                    <li>Subscription plans for regular walks</li>
+                    <li>Emergency contact and vet support</li>
+                    <li>Extra options, like playtime visits or bathing</li>
+                    <li>Ratings and feedback</li>
+                </ul>
+            </section>
+        </div>
+
+
+
+        <!-- JS SECTION 
+        JavaScript that makes the buttons work -->
+
+
+        <script>
+
+            // This function shows the selected proposal and hides the others
+            function toggle(id) {
+                // Step 1: Hide all proposals first
+                const secs = document.querySelectorAll('.section');
+                secs.forEach(s => s.style.display = 'none');
+
+
+                // 2. Find the section that matches the clicked button
+                // Step 2: Find the proposal we want to show
+                const el = document.getElementById(id);
+
+
+                // Step 3: Make that proposal visible
+                el.style.display = 'block';
+
+
+                // Step 4: Scroll to show the proposal smoothly
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        </script>
+    </body>
+</html>
